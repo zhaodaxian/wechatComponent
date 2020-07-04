@@ -1,0 +1,26 @@
+<view class="calendar-wrapper">
+  <view class="calendar-controller">
+    <view class="calendar-picker">
+      <text class="arrow left" bindtap="prevMonth"></text>
+      <picker
+        mode='date'
+        fields='month'
+        end="2999-12-31"
+        start="1970-01-01"
+        value="{{monthFormat}}"
+        bindchange="dateChange"
+      >
+        <text class="month-format">{{monthFormat}}</text>
+      </picker>
+      <text class="arrow right" bindtap="nextMonth"></text>
+    </view>
+  </view>
+  <view class="calendar-header">
+    <view class="item" wx:for="{{week}}" wx:key="*this">{{item}}</view>
+  </view>
+  <view class="calendar-container">
+    <view class="item {{item.today?'today':''}} {{item.otherMonth?'other-month':''}}" wx:for="{{calendar}}" wx:key="dataStr">
+      <text>{{item.day}}</text>
+    </view>
+  </view>
+</view>
